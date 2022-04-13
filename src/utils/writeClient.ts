@@ -26,7 +26,7 @@ import { writeClientServices } from './writeClientServices';
  * @param exportServices Generate services
  * @param exportModels Generate models
  * @param exportSchemas Generate schemas
- * @param exportSchemas Generate schemas
+ * @param exportIndex Generate index file
  * @param indent Indentation options (4, 2 or tab)
  * @param postfix Service name postfix
  * @param clientName Custom client class name
@@ -43,6 +43,7 @@ export const writeClient = async (
     exportServices: boolean,
     exportModels: boolean,
     exportSchemas: boolean,
+    exportIndex: boolean | undefined,
     indent: Indent,
     postfix: string,
     clientName?: string,
@@ -97,7 +98,7 @@ export const writeClient = async (
         await writeClientClass(client, templates, outputPath, httpClient, clientName, indent, postfix);
     }
 
-    if (exportCore || exportServices || exportSchemas || exportModels) {
+    if (exportIndex ?? (exportCore || exportServices || exportSchemas || exportModels)) {
         await mkdir(outputPath);
         await writeClientIndex(
             client,

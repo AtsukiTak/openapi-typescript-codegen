@@ -23,6 +23,7 @@ export type Options = {
     exportServices?: boolean;
     exportModels?: boolean;
     exportSchemas?: boolean;
+    exportIndex?: boolean;
     indent?: Indent;
     postfix?: string;
     request?: string;
@@ -43,6 +44,7 @@ export type Options = {
  * @param exportServices Generate services
  * @param exportModels Generate models
  * @param exportSchemas Generate schemas
+ * @param exportSchemas Generate index file
  * @param indent Indentation options (4, 2 or tab)
  * @param postfix Service name postfix
  * @param request Path to custom request file
@@ -59,6 +61,7 @@ export const generate = async ({
     exportServices = true,
     exportModels = true,
     exportSchemas = false,
+    exportIndex,
     indent = Indent.SPACE_4,
     postfix = 'Service',
     request,
@@ -88,6 +91,7 @@ export const generate = async ({
                 exportServices,
                 exportModels,
                 exportSchemas,
+                exportIndex,
                 indent,
                 postfix,
                 clientName,
@@ -111,6 +115,7 @@ export const generate = async ({
                 exportServices,
                 exportModels,
                 exportSchemas,
+                exportIndex,
                 indent,
                 postfix,
                 clientName,
