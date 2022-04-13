@@ -41,7 +41,7 @@ if (OpenAPI) {
         exportServices: JSON.parse(params.exportServices) === true,
         exportModels: JSON.parse(params.exportModels) === true,
         exportSchemas: JSON.parse(params.exportSchemas) === true,
-        exportIndex: params.exportIndex,
+        exportIndex: params.exportIndex ? JSON.parse(params.exportIndex) : undefined,
         indent: params.indent,
         postfix: params.postfix,
         request: params.request,
